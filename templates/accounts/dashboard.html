@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- =========================  COMPONENT WISHLIST ========================= -->
+<article class="card">
+	<header class="card-header" style="font-size: large; text-align: center; font-weight: bold"> Recommendations </header>
+	<div class="card-body">
+	<div class = "container">
+	<div class="row">
+		{% for recommendation in recommendations %}
+		<div class="col-md-4">
+			<figure class="itemside mb-4">
+				<div class="aside"><a href = "{% url 'product_details' productcategoryid=recommendation.productcategoryid productsubcategoryid=recommendation.productsubcategoryid productid=recommendation.productid%}"><img src="{% static recommendation.images %}" class="border img-md"></a></div>
+				<figcaption class="info">
+					<a href="#" class="title">{{recommendation.product_name}}</a>
+					<p class="price mb-2">${{recommendation.listprice | floatformat:2}}</p>
+					<a href="#" class="btn btn-primary btn-sm"> Add to cart </a>
+				</figcaption>
+			</figure>
+		</div> <!-- col.// -->
+		{% endfor %}
+
+	</div> <!-- card-body.// -->
+	</div>
+</article>
+<!-- =========================  COMPONENT WISHLIST END.// ========================= -->
+
+
+
+
+{% endblock %}

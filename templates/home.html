@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ========================= SECTION PAGETOP ========================= -->
+<section class="section-pagetop bg-secondary">
+	<div class="container">
+		<h2 class="title-page text-white text-center">Welcome to Adventure Works Bicycle Shop</h2>
+	
+	</div> <!-- container //  -->
+	</section>
+	<!-- ========================= SECTION INTRO END// ========================= -->
+	
+	<!-- ========================= SECTION CONTENT ========================= -->
+	<section class="section-content padding-y">
+	<div class="container">
+	
+	<header class="section-heading">
+	<h2 class="section-title">Company Information</h2>
+	</header><!-- sect-heading -->
+	
+	<p>Adventure Works Cycles is a large, multinational manufacturing company that produces 
+	and distributes metal and composite bicycles to commercial markets in North America, 
+	Europe, and Asia. The headquarters for Adventure Works Cycles is Bothell, Washington, 
+	where the company employs 500 workers. Additionally, Adventure Works Cycles 
+	employs several regional sales teams throughout its market base.</p>
+	<p>In recent years, Adventure Works Cycles bought a small manufacturing plant, 
+		Importadores Neptuno, which is located in Mexico. Importadores Neptuno manufactures 
+		several critical subcomponents for the Adventure Works Cycles product line. 
+		These subcomponents are shipped to the Bothell location for final product assembly. 
+		In 2005, Importadores Neptuno became the sole manufacturer and distributor of 
+		the touring bicycle product group.</p>
+	
+	<a href="{% url 'store' %}" class="btn btn-light"> &laquo Go Store</a>
+	
+	</div> <!-- container .//  -->
+	</section>
+	<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}

@@ -1,0 +1,1 @@
+web: gunicorn adventure_store_deploy.wsgi --log-file -

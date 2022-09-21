@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name  padding-y-sm">
+    <div class="container">
+    
+    <header class="section-heading">
+        <a href="#" class="btn btn-outline-primary float-right">See all</a>
+        {% for sub in subcategory %}
+        <h3 class="section-title">{{sub.subcategory}}</h3>
+        {% endfor %}
+    </header><!-- sect-heading -->
+    
+        
+    <div class="row">
+        {% for product in subcategories %}
+        <div class="col-md-3">
+            <div href="{% url 'product_details' productcategoryid=product.productcategoryid productsubcategoryid=product.productsubcategoryid productid=product.productid %}"  class="card card-product-grid">
+                <a href="{% url 'product_details' productcategoryid=product.productcategoryid productsubcategoryid=product.productsubcategoryid productid=product.productid %}" class="img-wrap"> <img src="{% static product.images %}"> </a>
+                <figcaption class="info-wrap">
+                    <a href="{% url 'product_details' productcategoryid=product.productcategoryid productsubcategoryid=product.productsubcategoryid productid=product.productid %}" class="title">{{product.product_name}}</a>
+                    <div class="price mt-1">${{product.listprice | floatformat:2 }}</div> <!-- price-wrap.// -->
+                </figcaption>
+            </div>
+        </div> <!-- col.// -->
+        {% endfor %}
+    </div> <!-- row.// -->
+    
+    </div><!-- container // -->
+    </section>
+    <!-- ========================= SECTION  END// ========================= -->
+
+    
+    
+    </div> <!-- container .//  -->
+</section>
+{% endblock %}

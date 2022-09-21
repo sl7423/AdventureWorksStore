@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="section-content padding-y bg">
+    <div class="container">
+    
+        {% for product in products %}
+        <!-- ============================ COMPONENT 1 ================================= -->
+        <div class="card">
+            <div class="row no-gutters">
+                <aside class="col-md-6">
+                    <article class="gallery-wrap"> 
+                        <div class="img-big-wrap">
+                        <a href="#"><img src="{% static product.images %}"></a>
+                        </div> <!-- img-big-wrap.// -->
+
+                        <div class="thumbs-wrap">
+                        {% for similar_product in similar_products %}
+                        <!-- <abbr title = "{{similar_product.product_name}}"> -->
+                        <a href="{% url 'product_details' productcategoryid=similar_product.productcategoryid productsubcategoryid=similar_product.productsubcategoryid productid=similar_product.productid %}" 
+                            data-toggle='tooltip' title="{{similar_product.product_name}}" class="item-thumb"><img src="{% static similar_product.images %}"></a>
+                        <!-- </abbr> -->
+                        {% endfor %}
+                        </div>
+                    </article>
+                </aside>
+                <main class="col-md-6 border-left">
+        <article class="content-body">
+        
+        <h2 class="title">{{product.product_name}}</h2>
+        
+        <div class="rating-wrap my-3">
+            <ul class="rating-stars">
+                <li style="width:80%" class="stars-active">
+                    <img src="../images/icons/stars-active.svg" alt="">
+                </li>
+                <li>
+                    <img src="../images/icons/starts-disable.svg" alt="">
+                </li>
+            </ul>
+            <small class="label-rating text-muted">132 reviews</small>
+            <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 154 orders </small>
+        </div> <!-- rating-wrap.// -->
+        
+        <div class="mb-3"> 
+            <var class="price h4">${{product.listprice | floatformat:2}}</var> 
+            <span class="text-muted">/per item</span> 
+        </div> 
+        
+        <p>{{product.description}}</p>
+        
+        <dl class="row">
+          <dt class="col-sm-3">Sub-Category:</dt>
+          <dd class="col-sm-9">{{product.subcategory}}</dd>
+            
+          {% if product.weight != None %}
+          <dt class="col-sm-3">Weight: </dt>
+          <dd class="col-sm-9">{{product.weight}}</dd>
+          {% endif %}
+        
+          {% if product.productline != None %}
+          <dt class="col-sm-3">Product Line:</dt>
+          <dd class="col-sm-9">{{product.productline}}</dd>
+          {% endif %}
+        
+          {% if product.class_field != None %}
+          <dt class="col-sm-3">Class:</dt>
+          <dd class="col-sm-9">{{product.class_field}}</dd>
+          {% endif %}
+        
+          {% if product.style != None %}
+          <dt class="col-sm-3">Style:</dt>
+          <dd class="col-sm-9">{{product.style}}</dd>
+          {% endif %}
+        
+        </dl>
+        
+        <hr>
+            <div class="row">
+                <div class="form-group col-md flex-grow-0">
+                    <label>Quantity</label>
+                    <div class="input-group mb-3 input-spinner">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-light" type="button" id="button-plus"> + </button>
+                      </div>
+                      <input type="text" class="form-control" value="1">
+                      <div class="input-group-append">
+                        <button class="btn btn-light" type="button" id="button-minus"> &minus; </button>
+                      </div>
+                    </div>
+                </div> <!-- col.// -->
+            </div> <!-- row.// -->
+            <a href="#" class="btn  btn-primary"> Buy now </a>
+            <a href="#" class="btn  btn-outline-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+        </article> <!-- product-info-aside .// -->
+                </main> <!-- col.// -->
+            </div> <!-- row.// -->
+        </div> <!-- card.// -->
+        <!-- ============================ COMPONENT 1 END .// ================================= -->
+        </br>
+        </br>
+        {% endfor %}
+    
+    
+    
+    </div> <!-- container .//  -->
+</section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock %}
